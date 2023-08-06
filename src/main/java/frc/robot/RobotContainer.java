@@ -6,7 +6,6 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.ArcadeDriveCommand;
-import frc.robot.commands.Autos;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -14,9 +13,12 @@ import frc.robot.subsystems.RotationSubsystem;
 import frc.robot.commands.ElevatorCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.RotationCommand;
+import frc.robot.commands.engageAuto;
+import frc.robot.commands.mobilityAuto;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 /**
@@ -43,6 +45,9 @@ public class RobotContainer {
   // A chooser for autonomous commands
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
+  private final Command m_engageAuto = new engageAuto(driveSubsystem, elevatorSubsystem, rotationSubsystem, intakeSubsystem);
+  private final Command m_mobilityAuto = new mobilityAuto(driveSubsystem, elevatorSubsystem, rotationSubsystem, intakeSubsystem);
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
@@ -52,6 +57,12 @@ public class RobotContainer {
     intakeSubsystem.setDefaultCommand(new IntakeCommand(intakeSubsystem, 0, 0));
     rotationSubsystem.setDefaultCommand(new RotationCommand(rotationSubsystem, 0.15, 0.15));
     driveSubsystem.setDefaultCommand(new ArcadeDriveCommand(driveSubsystem, m_driverController.getRawAxis(1), -m_driverController.getRawAxis(4)));
+  
+    m_chooser.setDefaultOption("Engage Auto", m_engageAuto);
+    m_chooser.addOption("Mobility Auto", m_mobilityAuto);
+    
+    // Put the chooser on the dashboard
+    Shuffleboard.getTab("Autonomous").add(m_chooser);
   }
 
   private void configureBindings() {
@@ -73,6 +84,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return Autos.engageAuto(driveSubsystem, elevatorSubsystem, rotationSubsystem, intakeSubsystem);
+    return m_chooser.getSelected();
   }
 }
