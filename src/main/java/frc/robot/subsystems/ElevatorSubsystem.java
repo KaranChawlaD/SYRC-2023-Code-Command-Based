@@ -28,11 +28,14 @@ public class ElevatorSubsystem extends SubsystemBase {
     return (limitswitchelevator.get());
   }
 
-  public ElevatorSubsystem() {}
+  public ElevatorSubsystem() {
+    elevatorright.setInverted(true);
+  }
 
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Elevator Right Encoder", getEncoderElevatorPosition());
+    SmartDashboard.putBoolean("Limit Switch State", getLimitSwitchElevatorState());
     // This method will be called once per scheduler run
   }
 
