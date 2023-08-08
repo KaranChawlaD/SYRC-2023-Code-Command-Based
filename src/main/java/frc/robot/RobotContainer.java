@@ -56,7 +56,7 @@ public class RobotContainer {
     elevatorSubsystem.setDefaultCommand(new ElevatorCommand(elevatorSubsystem, 0));
     intakeSubsystem.setDefaultCommand(new IntakeCommand(intakeSubsystem, 0, 0));
     rotationSubsystem.setDefaultCommand(new RotationCommand(rotationSubsystem, 0.15, 0.15));
-    driveSubsystem.setDefaultCommand(new ArcadeDriveCommand(driveSubsystem, m_driverController.getRawAxis(1), -m_driverController.getRawAxis(4)));
+    driveSubsystem.setDefaultCommand(new ArcadeDriveCommand(driveSubsystem, m_driverController.getRawAxis(1), -m_driverController.getRawAxis(4) * 0.7));
   
     m_chooser.setDefaultOption("Engage Auto", m_engageAuto);
     m_chooser.addOption("Mobility Auto", m_mobilityAuto);
@@ -67,13 +67,15 @@ public class RobotContainer {
 
   private void configureBindings() {
 
-    new JoystickButton(m_operatorController, 4).whileTrue((new ElevatorCommand(elevatorSubsystem, -0.6)));
+    new JoystickButton(m_operatorController, 4).whileTrue(new ElevatorCommand(elevatorSubsystem, -0.6));
     new JoystickButton(m_operatorController, 2).whileTrue(new ElevatorCommand(elevatorSubsystem, 0.3));
     new JoystickButton(m_operatorController, 6).whileTrue(new IntakeCommand(intakeSubsystem, 0.4, 0.2));
     new JoystickButton(m_operatorController, 8).whileTrue(new IntakeCommand(intakeSubsystem, -0.5, -0.2));
     new JoystickButton(m_operatorController, 3).whileTrue(new IntakeCommand(intakeSubsystem, 0, 0));
     new JoystickButton(m_operatorController, 7).whileTrue(new RotationCommand(rotationSubsystem, -0.55, 0.15));
     new JoystickButton(m_operatorController, 5).whileTrue(new RotationCommand(rotationSubsystem, 0.95, 0.15));
+    new JoystickButton(m_driverController, 1).onTrue(new ArcadeDriveCommand(driveSubsystem,  m_driverController.getRawAxis(1)*0.5, -m_driverController.getRawAxis(4) * 0.7 * 0.8));
+    new JoystickButton(m_driverController, 2).onTrue(new ArcadeDriveCommand(driveSubsystem, m_driverController.getRawAxis(1), -m_driverController.getRawAxis(4) * 0.7));
 
   }
 
