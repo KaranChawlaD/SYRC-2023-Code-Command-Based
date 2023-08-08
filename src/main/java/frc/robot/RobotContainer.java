@@ -4,7 +4,7 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
+import frc.robot.Constants.ControllerConstants;
 import frc.robot.commands.ArcadeDriveCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
@@ -37,10 +37,10 @@ public class RobotContainer {
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final Joystick m_driverController =
-      new Joystick(OperatorConstants.kDriverControllerPort);
+      new Joystick(ControllerConstants.kDriverControllerPort);
 
   private final Joystick m_operatorController =
-      new Joystick(OperatorConstants.kOperatorControllerPort);
+      new Joystick(ControllerConstants.kOperatorControllerPort);
   
   // A chooser for autonomous commands
   SendableChooser<Command> m_chooser = new SendableChooser<>();

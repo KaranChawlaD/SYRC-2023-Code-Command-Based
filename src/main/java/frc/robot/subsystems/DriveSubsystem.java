@@ -14,21 +14,23 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
+import frc.robot.Constants.DriveConstants;;
+
 
 
 public class DriveSubsystem extends SubsystemBase {
   /** Creates a new DriveSubsystem. */
-  private final WPI_VictorSPX drivefrontleft = new WPI_VictorSPX(4);
-  private final WPI_VictorSPX drivefrontright = new WPI_VictorSPX(6);
-  private final WPI_VictorSPX drivebackleft = new WPI_VictorSPX(12);
-  private final WPI_VictorSPX drivebackright = new WPI_VictorSPX(5);
+  private final WPI_VictorSPX drivefrontleft = new WPI_VictorSPX(DriveConstants.kDriveFrontLeft);
+  private final WPI_VictorSPX drivefrontright = new WPI_VictorSPX(DriveConstants.kDriveFrontRight);
+  private final WPI_VictorSPX drivebackleft = new WPI_VictorSPX(DriveConstants.kDriveBackLeft);
+  private final WPI_VictorSPX drivebackright = new WPI_VictorSPX(DriveConstants.kDriveBackRight);
 
   private final MotorControllerGroup driveleft = new MotorControllerGroup(drivefrontleft, drivebackleft);
   private final MotorControllerGroup driveright = new MotorControllerGroup(drivefrontright, drivebackright);
   private final DifferentialDrive driverobot = new DifferentialDrive(driveleft, driveright);
 
   private final AHRS gyro = new AHRS(SPI.Port.kMXP);
-  private final Encoder encoderleftdrive = new Encoder(1, 2);
+  private final Encoder encoderleftdrive = new Encoder(DriveConstants.kLeftEncoderA, DriveConstants.kLeftEncoderB);
 
   public double getEncoderDrivePosition() {
     return (encoderleftdrive.getDistance());
