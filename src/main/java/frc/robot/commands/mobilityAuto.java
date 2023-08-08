@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants.AutoConstants;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -19,14 +20,14 @@ public class mobilityAuto extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new RotationCommand(rotationSubsystem, -0.5, 0.0).withTimeout(0.3),
-      new ElevatorCommand(elevatorSubsystem, -0.5),
-      new ElevatorCommand(elevatorSubsystem, 0.15).withTimeout(0.1),
-      new RotationCommand(rotationSubsystem, 0.9, 0).withTimeout(0.7),
-      new IntakeCommand(intakeSubsystem, -0.9, 0).withTimeout(0.5),
-      new RotationCommand(rotationSubsystem, -0.6, 0).withTimeout(0.7),
-      new ElevatorCommand(elevatorSubsystem, 0.4).withTimeout(1.5),
-      new ArcadeDriveCommand(driveSubsystem, 0.65, 0).withTimeout(3.5)
+      new RotationCommand(rotationSubsystem, AutoConstants.kRotationOutSpeed, 0).withTimeout(AutoConstants.kRotationOutTime),
+      new ElevatorCommand(elevatorSubsystem, AutoConstants.kElevatorUpSpeed),
+      new ElevatorCommand(elevatorSubsystem, AutoConstants.kElevatorAlignSpeed).withTimeout(AutoConstants.kElevatorAlignTime),
+      new RotationCommand(rotationSubsystem, AutoConstants.kRotationUpSpeed, 0).withTimeout(AutoConstants.kRotationUpTime),
+      new IntakeCommand(intakeSubsystem, AutoConstants.kIntakeShootSpeed, 0).withTimeout(AutoConstants.kIntakeShootTime),
+      new RotationCommand(rotationSubsystem, AutoConstants.kRotationDownSpeed, 0).withTimeout(AutoConstants.kRotationDownTime),
+      new ElevatorCommand(elevatorSubsystem, AutoConstants.kElevatorDownSpeed).withTimeout(AutoConstants.kElevatorDownTime),
+      new ArcadeDriveCommand(driveSubsystem, AutoConstants.kAutoDriveSpeed, 0).withTimeout(AutoConstants.kMobilityDriveTime)
     );
   }
 }
