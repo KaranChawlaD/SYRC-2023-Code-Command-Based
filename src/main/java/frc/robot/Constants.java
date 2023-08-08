@@ -25,4 +25,15 @@ public final class Constants {
     public static final int kLeftEncoderA = 1;
     public static final int kLeftEncoderB = 2;
   }
+  public static class ElevatorConstants {
+    public static final int kElevatorLeft = 1;
+    public static final int kElevatorRIght = 2;
+    public static final int kLimitSwitchPort = 0;
+  }
+  public static class IntakeConstants {
+    public static final int kIntake = 3;
+  }
+  public static class RotationConstants {
+    public static final int kRotation = 13;
+  }
 }

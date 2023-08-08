@@ -8,17 +8,19 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.ElevatorConstants;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+
 public class ElevatorSubsystem extends SubsystemBase {
   /** Creates a new ElevatorSubsystem. */
-  private final CANSparkMax elevatorleft = new CANSparkMax(1, MotorType.kBrushless);
-  private final CANSparkMax elevatorright = new CANSparkMax(2, MotorType.kBrushless);
+  private final CANSparkMax elevatorleft = new CANSparkMax(ElevatorConstants.kElevatorLeft, MotorType.kBrushless);
+  private final CANSparkMax elevatorright = new CANSparkMax(ElevatorConstants.kElevatorRIght, MotorType.kBrushless);
   private final MotorControllerGroup elevator= new MotorControllerGroup(elevatorleft, elevatorright);
   private final RelativeEncoder encoderrightelevator = elevatorright.getEncoder();
-  private final DigitalInput limitswitchelevator = new DigitalInput(0);
+  private final DigitalInput limitswitchelevator = new DigitalInput(ElevatorConstants.kLimitSwitchPort);
 
   public double getEncoderElevatorPosition() {
     return (encoderrightelevator.getPosition());

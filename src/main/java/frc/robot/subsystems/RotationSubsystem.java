@@ -5,11 +5,12 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.RotationConstants;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class RotationSubsystem extends SubsystemBase {
   /** Creates a new RotationSubsystem. */
-  private final WPI_VictorSPX rotation = new WPI_VictorSPX(13);
+  private final WPI_VictorSPX rotation = new WPI_VictorSPX(RotationConstants.kRotation);
 
   public RotationSubsystem() {}
 
