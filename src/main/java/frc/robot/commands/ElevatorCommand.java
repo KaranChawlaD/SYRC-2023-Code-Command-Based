@@ -40,8 +40,7 @@ public class ElevatorCommand extends CommandBase {
   public boolean isFinished() {
     if (elevatorSubsystem.getLimitSwitchElevatorState()) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }

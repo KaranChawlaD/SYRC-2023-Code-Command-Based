@@ -20,14 +20,14 @@ public class engageAuto extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-    new RotationCommand(rotationSubsystem, AutoConstants.ROTATION_OUT_SPEED, 0).withTimeout(AutoConstants.ROTATION_OUT_TIME),
-    new ElevatorCommand(elevatorSubsystem, AutoConstants.ELEVATOR_UP_SPEED),
-    new ElevatorCommand(elevatorSubsystem, AutoConstants.ELEVATOR_ALIGN_SPEED).withTimeout(AutoConstants.ELEVATOR_ALIGN_TIME),
-    new RotationCommand(rotationSubsystem, AutoConstants.ROTATION_UP_SPEED, 0).withTimeout(AutoConstants.ROTATION_UP_TIME),
-    new IntakeCommand(intakeSubsystem, AutoConstants.INTAKE_SHOOT_SPEED, 0).withTimeout(AutoConstants.INTAKE_SHOOT_TIME),
-    new RotationCommand(rotationSubsystem, AutoConstants.ROTATION_DOWN_SPEED, 0).withTimeout(AutoConstants.ROTATION_DOWN_TIME),
-    new ElevatorCommand(elevatorSubsystem, AutoConstants.ELEVATOR_DOWN_SPEED).withTimeout(AutoConstants.ELEVATOR_DOWN_TIME),
-    new ArcadeDriveCommand(driveSubsystem, AutoConstants.AUTO_DRIVE_SPEED, 0).withTimeout(AutoConstants.ENGAGE_DRIVE_TIME),
-    new DriveEncoderCommand(driveSubsystem, AutoConstants.ENGAGE_DRIVE_SPEED, AutoConstants.ENGAGE_ENCODER_VALUE));
+      new RotationCommand(rotationSubsystem, AutoConstants.ROTATION_OUT_SPEED, 0).withTimeout(AutoConstants.ROTATION_OUT_TIME),
+      new ElevatorCommand(elevatorSubsystem, AutoConstants.ELEVATOR_UP_SPEED),
+      new ElevatorCommand(elevatorSubsystem, AutoConstants.ELEVATOR_ALIGN_SPEED).withTimeout(AutoConstants.ELEVATOR_ALIGN_TIME),
+      new RotationCommand(rotationSubsystem, AutoConstants.ROTATION_UP_SPEED, 0).withTimeout(AutoConstants.ROTATION_UP_TIME),
+      new IntakeCommand(intakeSubsystem, AutoConstants.INTAKE_SHOOT_SPEED, 0).withTimeout(AutoConstants.INTAKE_SHOOT_TIME),
+      new RotationCommand(rotationSubsystem, AutoConstants.ROTATION_DOWN_SPEED, 0).withTimeout(AutoConstants.ROTATION_DOWN_TIME),
+      new ElevatorCommand(elevatorSubsystem, AutoConstants.ELEVATOR_DOWN_SPEED).withTimeout(AutoConstants.ELEVATOR_DOWN_TIME),
+      new ArcadeDriveCommand(driveSubsystem, AutoConstants.AUTO_DRIVE_SPEED, 0).withTimeout(AutoConstants.ENGAGE_DRIVE_TIME),
+      new DriveEncoderCommand(driveSubsystem, AutoConstants.ENGAGE_DRIVE_SPEED, AutoConstants.ENGAGE_ENCODER_VALUE));
   }
 }

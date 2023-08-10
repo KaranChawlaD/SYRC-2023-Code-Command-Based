@@ -42,8 +42,7 @@ public class DriveEncoderCommand extends CommandBase {
   public boolean isFinished() {
     if (driveSubsystem.getEncoderDrivePosition() < distance) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
