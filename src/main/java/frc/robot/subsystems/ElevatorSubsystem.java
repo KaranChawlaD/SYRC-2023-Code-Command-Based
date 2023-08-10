@@ -16,22 +16,22 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class ElevatorSubsystem extends SubsystemBase {
   /** Creates a new ElevatorSubsystem. */
-  private final CANSparkMax elevatorleft = new CANSparkMax(ElevatorConstants.kElevatorLeft, MotorType.kBrushless);
-  private final CANSparkMax elevatorright = new CANSparkMax(ElevatorConstants.kElevatorRIght, MotorType.kBrushless);
-  private final MotorControllerGroup elevator= new MotorControllerGroup(elevatorleft, elevatorright);
-  private final RelativeEncoder encoderrightelevator = elevatorright.getEncoder();
-  private final DigitalInput limitswitchelevator = new DigitalInput(ElevatorConstants.kLimitSwitchPort);
+  private final CANSparkMax elevatorLeft = new CANSparkMax(ElevatorConstants.kElevatorLeft, MotorType.kBrushless);
+  private final CANSparkMax elevatorRight = new CANSparkMax(ElevatorConstants.kElevatorRIght, MotorType.kBrushless);
+  private final MotorControllerGroup elevator= new MotorControllerGroup(elevatorLeft, elevatorRight);
+  private final RelativeEncoder encoderRightElevator = elevatorRight.getEncoder();
+  private final DigitalInput limitSwitchElevator = new DigitalInput(ElevatorConstants.kLimitSwitchPort);
 
   public double getEncoderElevatorPosition() {
-    return (encoderrightelevator.getPosition());
+    return (encoderRightElevator.getPosition());
   }
 
   public boolean getLimitSwitchElevatorState() {
-    return (limitswitchelevator.get());
+    return (limitSwitchElevator.get());
   }
 
   public ElevatorSubsystem() {
-    elevatorright.setInverted(true);
+    elevatorRight.setInverted(true);
   }
 
   @Override

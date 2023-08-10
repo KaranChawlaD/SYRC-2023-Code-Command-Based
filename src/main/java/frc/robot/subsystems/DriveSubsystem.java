@@ -19,20 +19,20 @@ import frc.robot.Constants.DriveConstants;;
 
 public class DriveSubsystem extends SubsystemBase {
   /** Creates a new DriveSubsystem. */
-  private final WPI_VictorSPX drivefrontleft = new WPI_VictorSPX(DriveConstants.kDriveFrontLeft);
-  private final WPI_VictorSPX drivefrontright = new WPI_VictorSPX(DriveConstants.kDriveFrontRight);
-  private final WPI_VictorSPX drivebackleft = new WPI_VictorSPX(DriveConstants.kDriveBackLeft);
-  private final WPI_VictorSPX drivebackright = new WPI_VictorSPX(DriveConstants.kDriveBackRight);
+  private final WPI_VictorSPX driveFrontLeft = new WPI_VictorSPX(DriveConstants.kDriveFrontLeft);
+  private final WPI_VictorSPX driveFrontRight = new WPI_VictorSPX(DriveConstants.kDriveFrontRight);
+  private final WPI_VictorSPX driveBackLeft = new WPI_VictorSPX(DriveConstants.kDriveBackLeft);
+  private final WPI_VictorSPX driveBackRight = new WPI_VictorSPX(DriveConstants.kDriveBackRight);
 
-  private final MotorControllerGroup driveleft = new MotorControllerGroup(drivefrontleft, drivebackleft);
-  private final MotorControllerGroup driveright = new MotorControllerGroup(drivefrontright, drivebackright);
-  private final DifferentialDrive driverobot = new DifferentialDrive(driveleft, driveright);
+  private final MotorControllerGroup driveLeft = new MotorControllerGroup(driveFrontLeft, driveBackLeft);
+  private final MotorControllerGroup driveRight = new MotorControllerGroup(driveFrontRight, driveBackRight);
+  private final DifferentialDrive driveRobot = new DifferentialDrive(driveLeft, driveRight);
 
   private final AHRS gyro = new AHRS(SPI.Port.kMXP);
-  private final Encoder encoderleftdrive = new Encoder(DriveConstants.kLeftEncoderA, DriveConstants.kLeftEncoderB);
+  private final Encoder encoderLeftDrive = new Encoder(DriveConstants.kLeftEncoderA, DriveConstants.kLeftEncoderB);
 
   public double getEncoderDrivePosition() {
-    return (encoderleftdrive.getDistance());
+    return (encoderLeftDrive.getDistance());
   }
 
   public double getGyroYaw() {
@@ -48,11 +48,11 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public DriveSubsystem() {
-    drivefrontleft.setNeutralMode(NeutralMode.Brake);
-    drivefrontright.setNeutralMode(NeutralMode.Brake);
-    drivebackleft.setNeutralMode(NeutralMode.Brake);
-    drivebackright.setNeutralMode(NeutralMode.Brake);
-    driveright.setInverted(true);
+    driveFrontLeft.setNeutralMode(NeutralMode.Brake);
+    driveFrontRight.setNeutralMode(NeutralMode.Brake);
+    driveBackLeft.setNeutralMode(NeutralMode.Brake);
+    driveBackRight.setNeutralMode(NeutralMode.Brake);
+    driveRight.setInverted(true);
   }
 
   @Override
@@ -61,11 +61,11 @@ public class DriveSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Roll", getGyroRoll());
     SmartDashboard.putNumber("Pitch", getGyroPitch());
     SmartDashboard.putNumber("Yaw", getGyroYaw());
-    SmartDashboard.putNumber("Encoder Left Distance", encoderleftdrive.getDistance());
+    SmartDashboard.putNumber("Encoder Left Distance", encoderLeftDrive.getDistance());
 
   }
 
   public void setMotor(double forwardSpeed, double turnSpeed) {
-      driverobot.arcadeDrive(forwardSpeed, turnSpeed);
+      driveRobot.arcadeDrive(forwardSpeed, turnSpeed);
   }
 }
