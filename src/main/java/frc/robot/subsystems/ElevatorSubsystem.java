@@ -16,11 +16,11 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class ElevatorSubsystem extends SubsystemBase {
   /** Creates a new ElevatorSubsystem. */
-  private final CANSparkMax elevatorLeft = new CANSparkMax(ElevatorConstants.kElevatorLeft, MotorType.kBrushless);
-  private final CANSparkMax elevatorRight = new CANSparkMax(ElevatorConstants.kElevatorRIght, MotorType.kBrushless);
+  private final CANSparkMax elevatorLeft = new CANSparkMax(ElevatorConstants.ELEVATOR_LEFT, MotorType.kBrushless);
+  private final CANSparkMax elevatorRight = new CANSparkMax(ElevatorConstants.ELEVATOR_RIGHT, MotorType.kBrushless);
   private final MotorControllerGroup elevator= new MotorControllerGroup(elevatorLeft, elevatorRight);
   private final RelativeEncoder encoderRightElevator = elevatorRight.getEncoder();
-  private final DigitalInput limitSwitchElevator = new DigitalInput(ElevatorConstants.kLimitSwitchPort);
+  private final DigitalInput limitSwitchElevator = new DigitalInput(ElevatorConstants.LIMIT_SWITCH_PORT);
 
   public double getEncoderElevatorPosition() {
     return (encoderRightElevator.getPosition());

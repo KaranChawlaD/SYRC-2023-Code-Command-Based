@@ -19,17 +19,17 @@ import frc.robot.Constants.DriveConstants;;
 
 public class DriveSubsystem extends SubsystemBase {
   /** Creates a new DriveSubsystem. */
-  private final WPI_VictorSPX driveFrontLeft = new WPI_VictorSPX(DriveConstants.kDriveFrontLeft);
-  private final WPI_VictorSPX driveFrontRight = new WPI_VictorSPX(DriveConstants.kDriveFrontRight);
-  private final WPI_VictorSPX driveBackLeft = new WPI_VictorSPX(DriveConstants.kDriveBackLeft);
-  private final WPI_VictorSPX driveBackRight = new WPI_VictorSPX(DriveConstants.kDriveBackRight);
+  private final WPI_VictorSPX driveFrontLeft = new WPI_VictorSPX(DriveConstants.DRIVE_FRONT_LEFT);
+  private final WPI_VictorSPX driveFrontRight = new WPI_VictorSPX(DriveConstants.DRIVE_FRONT_RIGHT);
+  private final WPI_VictorSPX driveBackLeft = new WPI_VictorSPX(DriveConstants.DRIVE_BACK_LEFT);
+  private final WPI_VictorSPX driveBackRight = new WPI_VictorSPX(DriveConstants.DRIVE_BACK_RIGHT);
 
   private final MotorControllerGroup driveLeft = new MotorControllerGroup(driveFrontLeft, driveBackLeft);
   private final MotorControllerGroup driveRight = new MotorControllerGroup(driveFrontRight, driveBackRight);
   private final DifferentialDrive driveRobot = new DifferentialDrive(driveLeft, driveRight);
 
   private final AHRS gyro = new AHRS(SPI.Port.kMXP);
-  private final Encoder encoderLeftDrive = new Encoder(DriveConstants.kLeftEncoderA, DriveConstants.kLeftEncoderB);
+  private final Encoder encoderLeftDrive = new Encoder(DriveConstants.LEFT_ENCODER_A, DriveConstants.LEFT_ENCODER_B);
 
   public double getEncoderDrivePosition() {
     return (encoderLeftDrive.getDistance());

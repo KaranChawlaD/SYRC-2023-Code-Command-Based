@@ -41,10 +41,10 @@ public class RobotContainer {
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final Joystick m_driverController =
-      new Joystick(ControllerConstants.kDriverControllerPort);
+      new Joystick(ControllerConstants.DRIVER_CONTROLLER_PORT);
 
   private final Joystick m_operatorController =
-      new Joystick(ControllerConstants.kOperatorControllerPort);
+      new Joystick(ControllerConstants.OPERATOR_CONTROLLER_PORT);
   
   // A chooser for autonomous commands
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -59,8 +59,8 @@ public class RobotContainer {
 
     elevatorSubsystem.setDefaultCommand(new ElevatorCommand(elevatorSubsystem, 0));
     intakeSubsystem.setDefaultCommand(new IntakeCommand(intakeSubsystem, 0, 0));
-    rotationSubsystem.setDefaultCommand(new RotationCommand(rotationSubsystem, RotationConstants.kRotationStall, RotationConstants.kRotationStall));
-    driveSubsystem.setDefaultCommand(new ArcadeDriveCommand(driveSubsystem, m_driverController.getRawAxis(DriveConstants.kDriveAxis), -m_driverController.getRawAxis(DriveConstants.kTurnAxis) * DriveConstants.kTurnProportion));
+    rotationSubsystem.setDefaultCommand(new RotationCommand(rotationSubsystem, RotationConstants.ROTATION_STALL, RotationConstants.ROTATION_STALL));
+    driveSubsystem.setDefaultCommand(new ArcadeDriveCommand(driveSubsystem, m_driverController.getRawAxis(DriveConstants.DRIVE_AXIS), -m_driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION));
   
     m_chooser.setDefaultOption("Engage Auto", m_engageAuto);
     m_chooser.addOption("Mobility Auto", m_mobilityAuto);
@@ -71,15 +71,15 @@ public class RobotContainer {
 
   private void configureBindings() {
 
-    new JoystickButton(m_operatorController, ElevatorConstants.kElevatorUpButton).whileTrue(new ElevatorCommand(elevatorSubsystem, ElevatorConstants.kElevatorUpSpeed));
-    new JoystickButton(m_operatorController, ElevatorConstants.kElevatorDownButton).whileTrue(new ElevatorCommand(elevatorSubsystem, ElevatorConstants.kElevatorDownSpeed));
-    new JoystickButton(m_operatorController, IntakeConstants.kCubeInButton).whileTrue(new IntakeCommand(intakeSubsystem, IntakeConstants.kCubeInSpeed, IntakeConstants.kCubeInStall));
-    new JoystickButton(m_operatorController, IntakeConstants.kConeInButton).whileTrue(new IntakeCommand(intakeSubsystem, IntakeConstants.kConeInSpeed, IntakeConstants.kConeInStall));
-    new JoystickButton(m_operatorController, IntakeConstants.kIntakeOffButton).whileTrue(new IntakeCommand(intakeSubsystem, 0, 0));
-    new JoystickButton(m_operatorController, RotationConstants.kRotationDownButton).whileTrue(new RotationCommand(rotationSubsystem, RotationConstants.kRotationDownSpeed, RotationConstants.kRotationStall));
-    new JoystickButton(m_operatorController, RotationConstants.kRotationUpButton).whileTrue(new RotationCommand(rotationSubsystem, RotationConstants.kRotationUpSpeed, RotationConstants.kRotationStall));
-    new JoystickButton(m_driverController, DriveConstants.kSlowButton).onTrue(new ArcadeDriveCommand(driveSubsystem,  m_driverController.getRawAxis(DriveConstants.kDriveAxis) * DriveConstants.kDriveSlow, -m_driverController.getRawAxis(DriveConstants.kTurnAxis) * DriveConstants.kTurnProportion * DriveConstants.kTurnSlow));
-    new JoystickButton(m_driverController, DriveConstants.kNormalButton).onTrue(new ArcadeDriveCommand(driveSubsystem, m_driverController.getRawAxis(DriveConstants.kDriveAxis), -m_driverController.getRawAxis(DriveConstants.kTurnAxis) * DriveConstants.kTurnProportion));
+    new JoystickButton(m_operatorController, ElevatorConstants.ELEVATOR_UP_BUTTON).whileTrue(new ElevatorCommand(elevatorSubsystem, ElevatorConstants.ELEVATOR_UP_SPEED));
+    new JoystickButton(m_operatorController, ElevatorConstants.ELEVATOR_DOWN_BUTTON).whileTrue(new ElevatorCommand(elevatorSubsystem, ElevatorConstants.ELEVATOR_DOWN_SPEED));
+    new JoystickButton(m_operatorController, IntakeConstants.CUBE_IN_BUTTON).whileTrue(new IntakeCommand(intakeSubsystem, IntakeConstants.CUBE_IN_SPEED, IntakeConstants.CUBE_IN_STALL));
+    new JoystickButton(m_operatorController, IntakeConstants.CONE_IN_BUTTON).whileTrue(new IntakeCommand(intakeSubsystem, IntakeConstants.CONE_IN_SPEED, IntakeConstants.CONE_IN_STALL));
+    new JoystickButton(m_operatorController, IntakeConstants.INTAKE_OFF_BUTTON).whileTrue(new IntakeCommand(intakeSubsystem, 0, 0));
+    new JoystickButton(m_operatorController, RotationConstants.ROTATION_DOWN_BUTTON).whileTrue(new RotationCommand(rotationSubsystem, RotationConstants.ROTATION_DOWN_SPEED, RotationConstants.ROTATION_STALL));
+    new JoystickButton(m_operatorController, RotationConstants.ROTATION_UP_BUTTON).whileTrue(new RotationCommand(rotationSubsystem, RotationConstants.ROTATION_UP_SPEED, RotationConstants.ROTATION_STALL));
+    new JoystickButton(m_driverController, DriveConstants.SLOW_BUTTON).onTrue(new ArcadeDriveCommand(driveSubsystem,  m_driverController.getRawAxis(DriveConstants.DRIVE_AXIS) * DriveConstants.DRIVE_SLOW, -m_driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION * DriveConstants.TURN_SLOW));
+    new JoystickButton(m_driverController, DriveConstants.NORMAL_BUTTON).onTrue(new ArcadeDriveCommand(driveSubsystem, m_driverController.getRawAxis(DriveConstants.DRIVE_AXIS), -m_driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION));
 
   }
 

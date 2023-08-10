@@ -12,7 +12,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
-  private final CANSparkMax intake = new CANSparkMax(IntakeConstants.kIntake, MotorType.kBrushless);
+  private final CANSparkMax intake = new CANSparkMax(IntakeConstants.INTAKE, MotorType.kBrushless);
 
   public IntakeSubsystem() {}
 

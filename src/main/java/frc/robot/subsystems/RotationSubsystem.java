@@ -10,7 +10,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class RotationSubsystem extends SubsystemBase {
   /** Creates a new RotationSubsystem. */
-  private final WPI_VictorSPX rotation = new WPI_VictorSPX(RotationConstants.kRotation);
+  private final WPI_VictorSPX rotation = new WPI_VictorSPX(RotationConstants.ROTATION);
 
   public RotationSubsystem() {}
 
