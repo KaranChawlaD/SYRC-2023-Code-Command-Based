@@ -33,24 +33,24 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  // private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  // private final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
   private final DriveSubsystem driveSubsystem = new DriveSubsystem();
   private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
   private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   private final RotationSubsystem rotationSubsystem = new RotationSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final Joystick m_driverController =
+  private final Joystick driverController =
       new Joystick(ControllerConstants.DRIVER_CONTROLLER_PORT);
 
-  private final Joystick m_operatorController =
+  private final Joystick operatorController =
       new Joystick(ControllerConstants.OPERATOR_CONTROLLER_PORT);
   
   // A chooser for autonomous commands
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+  SendableChooser<Command> chooser = new SendableChooser<>();
 
-  private final Command m_engageAuto = new engageAuto(driveSubsystem, elevatorSubsystem, rotationSubsystem, intakeSubsystem);
-  private final Command m_mobilityAuto = new mobilityAuto(driveSubsystem, elevatorSubsystem, rotationSubsystem, intakeSubsystem);
+  private final Command engageAuto = new engageAuto(driveSubsystem, elevatorSubsystem, rotationSubsystem, intakeSubsystem);
+  private final Command mobilityAuto = new mobilityAuto(driveSubsystem, elevatorSubsystem, rotationSubsystem, intakeSubsystem);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -60,26 +60,26 @@ public class RobotContainer {
     elevatorSubsystem.setDefaultCommand(new ElevatorCommand(elevatorSubsystem, 0));
     intakeSubsystem.setDefaultCommand(new IntakeCommand(intakeSubsystem, 0, 0));
     rotationSubsystem.setDefaultCommand(new RotationCommand(rotationSubsystem, RotationConstants.ROTATION_STALL, RotationConstants.ROTATION_STALL));
-    driveSubsystem.setDefaultCommand(new ArcadeDriveCommand(driveSubsystem, m_driverController.getRawAxis(DriveConstants.DRIVE_AXIS), -m_driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION));
+    driveSubsystem.setDefaultCommand(new ArcadeDriveCommand(driveSubsystem, driverController.getRawAxis(DriveConstants.DRIVE_AXIS), -driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION));
   
-    m_chooser.setDefaultOption("Engage Auto", m_engageAuto);
-    m_chooser.addOption("Mobility Auto", m_mobilityAuto);
+    chooser.setDefaultOption("Engage Auto", engageAuto);
+    chooser.addOption("Mobility Auto", mobilityAuto);
     
     // Put the chooser on the dashboard
-    Shuffleboard.getTab("Autonomous").add(m_chooser);
+    Shuffleboard.getTab("Autonomous").add(chooser);
   }
 
   private void configureBindings() {
 
-    new JoystickButton(m_operatorController, ElevatorConstants.ELEVATOR_UP_BUTTON).whileTrue(new ElevatorCommand(elevatorSubsystem, ElevatorConstants.ELEVATOR_UP_SPEED));
-    new JoystickButton(m_operatorController, ElevatorConstants.ELEVATOR_DOWN_BUTTON).whileTrue(new ElevatorCommand(elevatorSubsystem, ElevatorConstants.ELEVATOR_DOWN_SPEED));
-    new JoystickButton(m_operatorController, IntakeConstants.CUBE_IN_BUTTON).whileTrue(new IntakeCommand(intakeSubsystem, IntakeConstants.CUBE_IN_SPEED, IntakeConstants.CUBE_IN_STALL));
-    new JoystickButton(m_operatorController, IntakeConstants.CONE_IN_BUTTON).whileTrue(new IntakeCommand(intakeSubsystem, IntakeConstants.CONE_IN_SPEED, IntakeConstants.CONE_IN_STALL));
-    new JoystickButton(m_operatorController, IntakeConstants.INTAKE_OFF_BUTTON).whileTrue(new IntakeCommand(intakeSubsystem, 0, 0));
-    new JoystickButton(m_operatorController, RotationConstants.ROTATION_DOWN_BUTTON).whileTrue(new RotationCommand(rotationSubsystem, RotationConstants.ROTATION_DOWN_SPEED, RotationConstants.ROTATION_STALL));
-    new JoystickButton(m_operatorController, RotationConstants.ROTATION_UP_BUTTON).whileTrue(new RotationCommand(rotationSubsystem, RotationConstants.ROTATION_UP_SPEED, RotationConstants.ROTATION_STALL));
-    new JoystickButton(m_driverController, DriveConstants.SLOW_BUTTON).onTrue(new ArcadeDriveCommand(driveSubsystem,  m_driverController.getRawAxis(DriveConstants.DRIVE_AXIS) * DriveConstants.DRIVE_SLOW, -m_driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION * DriveConstants.TURN_SLOW));
-    new JoystickButton(m_driverController, DriveConstants.NORMAL_BUTTON).onTrue(new ArcadeDriveCommand(driveSubsystem, m_driverController.getRawAxis(DriveConstants.DRIVE_AXIS), -m_driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION));
+    new JoystickButton(operatorController, ElevatorConstants.ELEVATOR_UP_BUTTON).whileTrue(new ElevatorCommand(elevatorSubsystem, ElevatorConstants.ELEVATOR_UP_SPEED));
+    new JoystickButton(operatorController, ElevatorConstants.ELEVATOR_DOWN_BUTTON).whileTrue(new ElevatorCommand(elevatorSubsystem, ElevatorConstants.ELEVATOR_DOWN_SPEED));
+    new JoystickButton(operatorController, IntakeConstants.CUBE_IN_BUTTON).whileTrue(new IntakeCommand(intakeSubsystem, IntakeConstants.CUBE_IN_SPEED, IntakeConstants.CUBE_IN_STALL));
+    new JoystickButton(operatorController, IntakeConstants.CONE_IN_BUTTON).whileTrue(new IntakeCommand(intakeSubsystem, IntakeConstants.CONE_IN_SPEED, IntakeConstants.CONE_IN_STALL));
+    new JoystickButton(operatorController, IntakeConstants.INTAKE_OFF_BUTTON).whileTrue(new IntakeCommand(intakeSubsystem, 0, 0));
+    new JoystickButton(operatorController, RotationConstants.ROTATION_DOWN_BUTTON).whileTrue(new RotationCommand(rotationSubsystem, RotationConstants.ROTATION_DOWN_SPEED, RotationConstants.ROTATION_STALL));
+    new JoystickButton(operatorController, RotationConstants.ROTATION_UP_BUTTON).whileTrue(new RotationCommand(rotationSubsystem, RotationConstants.ROTATION_UP_SPEED, RotationConstants.ROTATION_STALL));
+    new JoystickButton(driverController, DriveConstants.SLOW_BUTTON).onTrue(new ArcadeDriveCommand(driveSubsystem,  driverController.getRawAxis(DriveConstants.DRIVE_AXIS) * DriveConstants.DRIVE_SLOW, -driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION * DriveConstants.TURN_SLOW));
+    new JoystickButton(driverController, DriveConstants.NORMAL_BUTTON).onTrue(new ArcadeDriveCommand(driveSubsystem, driverController.getRawAxis(DriveConstants.DRIVE_AXIS), -driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION));
 
   }
 
@@ -90,6 +90,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return m_chooser.getSelected();
+    return chooser.getSelected();
   }
 }
