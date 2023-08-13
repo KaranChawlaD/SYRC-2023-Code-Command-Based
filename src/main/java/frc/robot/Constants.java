@@ -25,7 +25,7 @@ public final class Constants {
     public static final int LEFT_ENCODER_A = 1;
     public static final int LEFT_ENCODER_B = 2;
     public static final int DRIVE_AXIS = 1;
-    public static final int TURN_AXIS = 4;
+    public static final int TURN_AXIS = 0;
     public static final double TURN_PROPORTION = 0.7;
     public static final double DRIVE_SLOW = 0.5;
     public static final double TURN_SLOW = 0.8;
@@ -84,6 +84,7 @@ public final class Constants {
     public static final double AUTO_DRIVE_SPEED = 0.65;
     public static final double ENGAGE_DRIVE_SPEED = 0.55;
     public static final double ENGAGE_ENCODER_VALUE = -1240;
+    public static final double MOBILITY_ENCODER_VALUE = -2480;
     public static final double MOBILITY_DRIVE_TIME = 3.5;
   }
 }

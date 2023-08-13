@@ -27,7 +27,7 @@ public class engageAuto extends SequentialCommandGroup {
       new IntakeCommand(intakeSubsystem, AutoConstants.INTAKE_SHOOT_SPEED, 0).withTimeout(AutoConstants.INTAKE_SHOOT_TIME),
       new RotationCommand(rotationSubsystem, AutoConstants.ROTATION_DOWN_SPEED, 0).withTimeout(AutoConstants.ROTATION_DOWN_TIME),
       new ElevatorCommand(elevatorSubsystem, AutoConstants.ELEVATOR_DOWN_SPEED).withTimeout(AutoConstants.ELEVATOR_DOWN_TIME),
-      new ArcadeDriveCommand(driveSubsystem, AutoConstants.AUTO_DRIVE_SPEED, 0).withTimeout(AutoConstants.ENGAGE_DRIVE_TIME),
+      new DriveEncoderCommand(driveSubsystem, AutoConstants.AUTO_DRIVE_SPEED, AutoConstants.ENGAGE_ENCODER_VALUE).withTimeout(AutoConstants.ENGAGE_DRIVE_TIME),
       new DriveEncoderCommand(driveSubsystem, AutoConstants.ENGAGE_DRIVE_SPEED, AutoConstants.ENGAGE_ENCODER_VALUE));
   }
 }

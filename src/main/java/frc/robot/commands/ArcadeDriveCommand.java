@@ -4,15 +4,17 @@
 
 package frc.robot.commands;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveSubsystem;
 
 public class ArcadeDriveCommand extends CommandBase {
 
   private final DriveSubsystem driveSubsystem;
-  private final double speedFunction, turnFunction;
+  private final DoubleSupplier speedFunction, turnFunction;
   /** Creates a new ArcadeDriveCommand. */
-  public ArcadeDriveCommand(DriveSubsystem driveSubsystem, double speedFunction, double turnFunction) {
+  public ArcadeDriveCommand(DriveSubsystem driveSubsystem, DoubleSupplier speedFunction, DoubleSupplier turnFunction) {
     this.driveSubsystem = driveSubsystem;
     this.speedFunction = speedFunction;
     this.turnFunction = turnFunction;
@@ -27,12 +29,14 @@ public class ArcadeDriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveSubsystem.setMotor(speedFunction, turnFunction);
+    driveSubsystem.setMotor(speedFunction.getAsDouble(), turnFunction.getAsDouble());
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    driveSubsystem.setMotor(0.0, 0.0);
+  }
 
   // Returns true when the command should end.
   @Override

@@ -57,10 +57,10 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
 
-    elevatorSubsystem.setDefaultCommand(new ElevatorCommand(elevatorSubsystem, 0));
-    intakeSubsystem.setDefaultCommand(new IntakeCommand(intakeSubsystem, 0, 0));
-    rotationSubsystem.setDefaultCommand(new RotationCommand(rotationSubsystem, RotationConstants.ROTATION_STALL, RotationConstants.ROTATION_STALL));
-    driveSubsystem.setDefaultCommand(new ArcadeDriveCommand(driveSubsystem, driverController.getRawAxis(DriveConstants.DRIVE_AXIS), -driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION));
+    // elevatorSubsystem.setDefaultCommand(new ElevatorCommand(elevatorSubsystem, 0));
+    // intakeSubsystem.setDefaultCommand(new IntakeCommand(intakeSubsystem, 0, 0));
+    // rotationSubsystem.setDefaultCommand(new RotationCommand(rotationSubsystem, RotationConstants.ROTATION_STALL, RotationConstants.ROTATION_STALL));
+    driveSubsystem.setDefaultCommand(new ArcadeDriveCommand(driveSubsystem, () -> driverController.getRawAxis(DriveConstants.DRIVE_AXIS), () -> (-driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION)));
   
     chooser.setDefaultOption("Engage Auto", engageAuto);
     chooser.addOption("Mobility Auto", mobilityAuto);
@@ -78,8 +78,8 @@ public class RobotContainer {
     new JoystickButton(operatorController, IntakeConstants.INTAKE_OFF_BUTTON).whileTrue(new IntakeCommand(intakeSubsystem, 0, 0));
     new JoystickButton(operatorController, RotationConstants.ROTATION_DOWN_BUTTON).whileTrue(new RotationCommand(rotationSubsystem, RotationConstants.ROTATION_DOWN_SPEED, RotationConstants.ROTATION_STALL));
     new JoystickButton(operatorController, RotationConstants.ROTATION_UP_BUTTON).whileTrue(new RotationCommand(rotationSubsystem, RotationConstants.ROTATION_UP_SPEED, RotationConstants.ROTATION_STALL));
-    new JoystickButton(driverController, DriveConstants.SLOW_BUTTON).onTrue(new ArcadeDriveCommand(driveSubsystem,  driverController.getRawAxis(DriveConstants.DRIVE_AXIS) * DriveConstants.DRIVE_SLOW, -driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION * DriveConstants.TURN_SLOW));
-    new JoystickButton(driverController, DriveConstants.NORMAL_BUTTON).onTrue(new ArcadeDriveCommand(driveSubsystem, driverController.getRawAxis(DriveConstants.DRIVE_AXIS), -driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION));
+    new JoystickButton(driverController, DriveConstants.SLOW_BUTTON).onTrue(new ArcadeDriveCommand(driveSubsystem, () -> (driverController.getRawAxis(DriveConstants.DRIVE_AXIS) * DriveConstants.DRIVE_SLOW), () -> (-driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION * DriveConstants.TURN_SLOW)));
+    new JoystickButton(driverController, DriveConstants.NORMAL_BUTTON).onTrue(new ArcadeDriveCommand(driveSubsystem, () -> driverController.getRawAxis(DriveConstants.DRIVE_AXIS), () -> (-driverController.getRawAxis(DriveConstants.TURN_AXIS) * DriveConstants.TURN_PROPORTION)));
 
   }
 
