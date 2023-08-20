@@ -38,10 +38,6 @@ public class ElevatorCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (elevatorSubsystem.getLimitSwitchElevatorState()) {
-      return true;
-    } else {
-      return false;
-    }
+    return elevatorSubsystem.getLimitSwitchElevatorState();
   }
 }

@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
-import frc.robot.Constants.DriveConstants;;
+import frc.robot.Constants.DriveConstants;
 
 
 
@@ -66,6 +66,6 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public void setMotor(double forwardSpeed, double turnSpeed) {
-      driveRobot.arcadeDrive(forwardSpeed, turnSpeed);
+    driveRobot.arcadeDrive(forwardSpeed, turnSpeed);
   }
 }

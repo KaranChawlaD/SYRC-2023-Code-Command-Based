@@ -11,6 +11,7 @@ public class RotationCommand extends CommandBase {
   private final RotationSubsystem rotationSubsystem;
   private final double speed;
   private final double stall;
+
   /** Creates a new RotationCommand. */
   public RotationCommand(RotationSubsystem rotationSubsystem, double speed, double stall) {
     this.rotationSubsystem = rotationSubsystem;

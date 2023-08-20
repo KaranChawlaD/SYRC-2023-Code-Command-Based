@@ -17,8 +17,8 @@ import frc.robot.subsystems.RotationSubsystem;
 import frc.robot.commands.ElevatorCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.RotationCommand;
-import frc.robot.commands.engageAuto;
-import frc.robot.commands.mobilityAuto;
+import frc.robot.commands.EngageAuto;
+import frc.robot.commands.MobilityAuto;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
@@ -49,8 +49,8 @@ public class RobotContainer {
   // A chooser for autonomous commands
   SendableChooser<Command> chooser = new SendableChooser<>();
 
-  private final Command engageAuto = new engageAuto(driveSubsystem, elevatorSubsystem, rotationSubsystem, intakeSubsystem);
-  private final Command mobilityAuto = new mobilityAuto(driveSubsystem, elevatorSubsystem, rotationSubsystem, intakeSubsystem);
+  private final Command engageAuto = new EngageAuto(driveSubsystem, elevatorSubsystem, rotationSubsystem, intakeSubsystem);
+  private final Command mobilityAuto = new MobilityAuto(driveSubsystem, elevatorSubsystem, rotationSubsystem, intakeSubsystem);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {

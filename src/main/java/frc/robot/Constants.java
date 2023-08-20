@@ -17,6 +17,7 @@ public final class Constants {
     public static final int DRIVER_CONTROLLER_PORT = 0;
     public static final int OPERATOR_CONTROLLER_PORT = 1;
   }
+
   public static class DriveConstants {
     public static final int DRIVE_FRONT_LEFT = 4;
     public static final int DRIVE_FRONT_RIGHT = 6;
@@ -32,6 +33,7 @@ public final class Constants {
     public static final int SLOW_BUTTON = 1;
     public static final int NORMAL_BUTTON = 2;
   }
+
   public static class ElevatorConstants {
     public static final int ELEVATOR_LEFT = 1;
     public static final int ELEVATOR_RIGHT = 2;
@@ -41,6 +43,7 @@ public final class Constants {
     public static final double ELEVATOR_UP_SPEED = -0.6;
     public static final double ELEVATOR_DOWN_SPEED = 0.3;
   }
+
   public static class IntakeConstants {
     public static final int INTAKE = 3;
     public static final int CUBE_IN_BUTTON = 6;
@@ -51,6 +54,7 @@ public final class Constants {
     public static final double CONE_IN_SPEED = -0.5;
     public static final double CONE_IN_STALL = -0.2;
   }
+
   public static class RotationConstants {
     public static final int ROTATION = 13;
     public static final double ROTATION_STALL = 0.15;
@@ -59,6 +63,7 @@ public final class Constants {
     public static final double ROTATION_UP_SPEED = 0.95;
     public static final double ROTATION_DOWN_SPEED = -0.55;
   }
+
   public static class AutoConstants {
     //Rotation
     public static final double ROTATION_OUT_TIME = 0.3;
@@ -69,12 +74,12 @@ public final class Constants {
     public static final double ROTATION_DOWN_SPEED = -0.6;
   
     //Intake
-    public static final double INTAKE_SHOOT_TIME= 0.5;
-    public static final double INTAKE_SHOOT_SPEED= -0.9;
+    public static final double INTAKE_SHOOT_TIME = 0.5;
+    public static final double INTAKE_SHOOT_SPEED = -0.9;
 
     //Elevator
-    public static final double ELEVATOR_ALIGN_TIME= 0.1;
-    public static final double ELEVATOR_DOWN_TIME= 1.5;
+    public static final double ELEVATOR_ALIGN_TIME = 0.1;
+    public static final double ELEVATOR_DOWN_TIME = 1.5;
     public static final double ELEVATOR_UP_SPEED = -0.5;
     public static final double ELEVATOR_ALIGN_SPEED = 0.15;
     public static final double ELEVATOR_DOWN_SPEED = 0.4;
