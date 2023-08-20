@@ -11,6 +11,7 @@ public class IntakeCommand extends CommandBase {
   private final IntakeSubsystem intakeSubsystem;
   private final double speed;
   private final double stall;
+
   /** Creates a new IntakeCommand. */
   public IntakeCommand(IntakeSubsystem intakeSubsystem, double speed, double stall) {
     this.intakeSubsystem = intakeSubsystem;

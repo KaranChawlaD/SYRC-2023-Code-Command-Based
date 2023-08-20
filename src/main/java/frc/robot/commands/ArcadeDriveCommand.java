@@ -13,6 +13,7 @@ public class ArcadeDriveCommand extends CommandBase {
 
   private final DriveSubsystem driveSubsystem;
   private final DoubleSupplier speedFunction, turnFunction;
+
   /** Creates a new ArcadeDriveCommand. */
   public ArcadeDriveCommand(DriveSubsystem driveSubsystem, DoubleSupplier speedFunction, DoubleSupplier turnFunction) {
     this.driveSubsystem = driveSubsystem;

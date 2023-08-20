@@ -14,9 +14,9 @@ import frc.robot.subsystems.RotationSubsystem;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class mobilityAuto extends SequentialCommandGroup {
-  /** Creates a new mobilityAuto. */
-  public mobilityAuto(DriveSubsystem driveSubsystem, ElevatorSubsystem elevatorSubsystem, RotationSubsystem rotationSubsystem, IntakeSubsystem intakeSubsystem) {
+public class MobilityAuto extends SequentialCommandGroup {
+  /** Creates a new MobilityAuto. */
+  public MobilityAuto(DriveSubsystem driveSubsystem, ElevatorSubsystem elevatorSubsystem, RotationSubsystem rotationSubsystem, IntakeSubsystem intakeSubsystem) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
